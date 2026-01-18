@@ -48,22 +48,22 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- 1. 數據資料庫 (Unit 9 專屬) ---
+# --- 1. 數據資料庫 (Unit 9 修正版) ---
 
 # 單字：衣物 (全部小寫)
 VOCABULARY = {
     "riko'":    {"zh": "衣服", "emoji": "👕", "file": "u9_riko"},
-    "calao":    {"zh": "褲子", "emoji": "👖", "file": "u9_calao"},
+    "kafer":    {"zh": "褲子", "emoji": "👖", "file": "u9_kafer"},
     "cokap":    {"zh": "鞋子", "emoji": "👟", "file": "u9_cokap"},
-    "topi":     {"zh": "帽子", "emoji": "🧢", "file": "u9_topi"},
-    "karing":   {"zh": "眼鏡", "emoji": "👓", "file": "u9_karing"},
-    "faci'":    {"zh": "包包/袋子", "emoji": "🎒", "file": "u9_faci"}
+    "kafong":   {"zh": "帽子", "emoji": "🧢", "file": "u9_kafong"},
+    "tamataan": {"zh": "眼鏡", "emoji": "👓", "file": "u9_tamataan"},
+    "roto":     {"zh": "包包/袋子", "emoji": "🎒", "file": "u9_roto"}
 }
 
 # 句型：動作與描述
 SENTENCES = [
     {"amis": "Cica'edong to riko'.", "zh": "穿著衣服。", "file": "u9_s_wear_clothes"},
-    {"amis": "Kahengangay ko topi.", "zh": "帽子是紅色的。", "file": "u9_s_red_hat"},
+    {"amis": "Kahengangay ko kafong.", "zh": "帽子是紅色的。", "file": "u9_s_red_hat"},
     {"amis": "Kohecalay ko cokap.", "zh": "鞋子是白色的。", "file": "u9_s_white_shoes"}
 ]
 
@@ -155,20 +155,20 @@ def show_quiz_mode():
                 st.session_state.current_q += 1
                 st.rerun()
         with c2:
-            if st.button("🧢 topi (帽子)"): st.error("不對喔，topi 是帽子！")
+            if st.button("🧢 kafong (帽子)"): st.error("不對喔，kafong 是帽子！")
 
     # 第二關：句子理解 (顏色+物品)
     elif st.session_state.current_q == 1:
         st.markdown("### 第二關：哪頂帽子？")
         st.markdown("#### 請聽句子：")
-        play_audio("Kahengangay ko topi.", filename_base="u9_s_red_hat")
+        play_audio("Kahengangay ko kafong.", filename_base="u9_s_red_hat")
         
         st.write("請問句子描述的是哪一個？")
         c1, c2 = st.columns(2)
         with c1:
             if st.button("🧢 紅色的帽子"):
                 st.snow()
-                st.success("沒錯！ Kahengangay (紅) ko topi.")
+                st.success("沒錯！ Kahengangay (紅) ko kafong.")
                 time.sleep(1)
                 st.session_state.score += 100
                 st.session_state.current_q += 1
@@ -184,11 +184,11 @@ def show_quiz_mode():
         
         st.markdown("<div style='font-size:80px; text-align:center;'>👖</div>", unsafe_allow_html=True)
         
-        options = ["O calao (是褲子)", "O riko' (是衣服)", "O karing (是眼鏡)"]
+        options = ["O kafer (是褲子)", "O riko' (是衣服)", "O tamataan (是眼鏡)"]
         choice = st.radio("請選擇：", options)
         
         if st.button("確定送出"):
-            if "calao" in choice:
+            if "kafer" in choice:
                 st.balloons()
                 st.success("太厲害了！全部答對！")
                 time.sleep(1)
